@@ -1,0 +1,16 @@
+{% extends "recommend/base.html" %}
+{% block title %}{{ team.name }}{% endblock %}
+{% block content %}
+ <h1>{{ team.id }}</h1>
+
+ {% for recommendation in recommendations %}
+ <h2>
+ <a href="{{ recommendation.id }}">
+ {{ recommendation.recommendation.body }}
+ </a>
+ </h2>
+ <p class="date">
+ Created at {{ recommendation.created_at }}, Status {{recommendation.status}}
+ </p>
+ {% endfor %} 
+{% endblock %}

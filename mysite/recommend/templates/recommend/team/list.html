@@ -1,0 +1,19 @@
+{% extends "recommend/base.html" %}
+{% block title %}My Team{% endblock %}
+{% block content %}
+ <h1>My Team</h1>
+ {% for recommendation in recommendations %}
+ <h2>
+ <a href="{{ recommendation.id }}">
+ {{ recommendation.recommendation.body }}
+ </a>
+ </h2>
+ <p class="date">
+ Created at {{ recommendation.created_at }} for {{ recommendation.team }}
+ </p>
+ {% comment %} {{ recommendation.recommendation|truncatewords:30|linebreaks }} {% endcomment %}
+ {% endfor %}
+ {% comment %} {% include "pagination.html" with page=posts %} {% endcomment %}
+ {% comment %} {% include "pagination.html" with page=page_obj %} {% endcomment %}
+
+{% endblock %}

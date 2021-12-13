@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+ <title>{% block title %}{% endblock %}</title>
+ <link href="{% static "css/recommend.css" %}" rel="stylesheet">
+</head>
+<body>
+ <div id="content">
+ {% block content %}
+ {% endblock %}
+ </div>
+ <div id="sidebar">
+ <h2>Recommendation Engine</h2>
+ <p>This is the recommendation engine.</p>
+ </div>
+</body>
+</html>
