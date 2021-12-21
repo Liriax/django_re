@@ -10,4 +10,5 @@ Steps after cloning:
 6. cd frontend
 7. npm start
 
-Now the react frontend should be started on port 3000 and the django backend on port 8080
+Now the react frontend should be started on http://localhost:3000/ and the django backend on port 8080:http://127.0.0.1:8080/admin/
+Create a superuser with python manage.py createsuperuser or use account = password = admin
