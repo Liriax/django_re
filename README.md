@@ -15,6 +15,9 @@ Create a superuser with python manage.py createsuperuser or use account = passwo
 
 URLs:
 /admin/: Admin Panel, hier kann man die DB verwalten
+
 /recommend/: zeigt alle gegebenen Recommendations (für alle Teams) an -> Spätere "Statistik"-Seite?
+
 /recommend/n/: zeigt alle Recommendations für Team mit dem ID n an (n ist ein Integer) -> Recommendations von der Vergangenheit ausblenden
+
 /recommend/n/2021/12/22/: zeigt alle Recommendations für Team mit dem ID n am Tag 22/12/2021 an
