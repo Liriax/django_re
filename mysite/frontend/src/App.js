@@ -7,7 +7,7 @@ class App extends Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch('http://127.0.0.1:8080/recommend/'); // fetching the data before the page loaded
+      const res = await fetch('http://127.0.0.1:8080/recommend/api/'); // fetching the data before the page loaded
       const recommendations = await res.json();
       console.log(recommendations);
       this.setState({
