@@ -19,15 +19,15 @@ Recommendation engine test backend, database & frontend
 
 ### Routes
 - *[GET]* Recommendations: `http://127.0.0.1:8080/recommend`
-- *[GET]* Teams Recommendations: `http://127.0.0.1:8080/recommend/%team%`
-- *[GET]* Days Recommendations: `http://127.0.0.1:8080/recommend/%team%/%day%`
+- *[GET]* Teams Recommendations: `http://127.0.0.1:8080/recommend/1`
+- *[GET]* Days Recommendations: `http://127.0.0.1:8080/recommend/1/22/12/2021`
 
 ## Frontend
 ### Installation & Start
 - Open the folder: `cd frontend`
 - Install dependencies: `npm install`
 - Start frontend: `npm start`
-- Open frontend: hhtp://127.0.0.1:3000
+- Open frontend: http://127.0.0.1:3000
 
 ### Storybook
 - Start Storybook: `npm run storybook`
