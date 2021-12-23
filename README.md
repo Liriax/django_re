@@ -1,25 +1,33 @@
 # django_re
-recommendation engine test back end &amp; database
+Recommendation engine test backend, database & frontend
 
-Steps after cloning:
-1. create virtual environment
-2. activate virtual environment
-3. pip install -r requirements.txt
-4. cd mysite
-5. python manage.py runserver 8080
-6. cd frontend
-7. npm start
+## Common
+- Clone the repo: `git clone https://github.com/Liriax/django_re.git`
+- Open the folder: `cd django_re`
 
-Now the react frontend should be started on http://localhost:3000/ and the django backend on port 8080:http://127.0.0.1:8080/admin/
+## Backend & Administration
+### Installation & Start
+- Create virtual environment: `python -m venv venv`
+- Activate virtual environment
+ - macOS: `source ./venv/bin/activate`
+ - Windows: `venv/Scripts/activate`
+- Install requirements: `pip install -r requirements.txt`
+- Open the folder: `cd administration`
+- Start backend: `python manage.py runserver 8080`
+- Create a user: `with python manage.py createsuperuser`
+- Open administration: http://127.0.0.1:8080/admin
 
-Create a superuser with python manage.py createsuperuser or use account = password = admin
+### Routes
+- *[GET]* Recommendations: `http://127.0.0.1:8080/recommend`
+- *[GET]* Teams Recommendations: `http://127.0.0.1:8080/recommend/%team%`
+- *[GET]* Days Recommendations: `http://127.0.0.1:8080/recommend/%team%/%day%`
 
-URLs:
+## Frontend
+### Installation & Start
+- Open the folder: `cd frontend`
+- Install dependencies: `npm install`
+- Start frontend: `npm start`
+- Open frontend: hhtp://127.0.0.1:3000
 
-/admin/: Admin Panel, hier kann man die DB verwalten
-
-/recommend/: zeigt alle gegebenen Recommendations (für alle Teams) an -> Spätere "Statistik"-Seite?
-
-/recommend/n/: zeigt alle Recommendations für Team mit dem ID n an (n ist ein Integer) -> Recommendations von der Vergangenheit ausblenden
-
-/recommend/n/2021/12/22/: zeigt alle Recommendations für Team mit dem ID n am Tag 22/12/2021 an
+### Storybook
+- Start Storybook: `npm run storybook`
