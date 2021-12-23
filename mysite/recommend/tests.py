@@ -1,5 +1,4 @@
 from django.test import TestCase
-
 # Create your tests here.
 from .models import Recommendation, Team, SuggestedRecommendation
 from .Recommender import Recommender
