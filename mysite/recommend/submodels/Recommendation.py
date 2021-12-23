@@ -1,6 +1,7 @@
 from django.db import models
 from .Metric import Metric
 class Recommendation(models.Model):
+    id = models.IntegerField(primary_key=True)
     headline = models.CharField(max_length=250)
     description = models.TextField(null=True)
     metric = models.ForeignKey(Metric,
