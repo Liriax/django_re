@@ -2,7 +2,7 @@ from django.db import models
 
 class Team(models.Model):
     name = models.CharField(max_length=250)
-    contact_person = models.CharField(max_length=250,null=True)
+    contact_person = models.CharField(max_length=250,blank=True)
     class Meta:
         ordering = ('-name',)
         app_label = 'recommend'

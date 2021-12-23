@@ -2,14 +2,19 @@
 {% block title %}{{ team.name }}{% endblock %}
 {% block content %}
  <h1>{{ team.name }}</h1>
-
- {% for recommendation in recommendations %}
- <h2>
- <a href="{{ recommendation.id }}">
- {{ recommendation.body }}
- </a>
- </h2>
- <p class="date">
- </p>
- {% endfor %} 
+{% if recommendations %}
+    Number of recommendations: {{ recommendations|length }}
+    {% for recommendation in recommendations %}
+        <h2>
+        <a href="{{ recommendation.id }}">
+        {{ recommendation.headline }}
+        </a>
+        </h2>
+        <p>
+            {{recommendation.description}}
+        </p>
+    {% endfor %} 
+{% else %}
+ No recommendations yet: no measurements
+{% endif %}
 {% endblock %}
