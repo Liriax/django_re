@@ -18,9 +18,9 @@ Recommendation engine test backend, database & frontend
 - Open administration: http://127.0.0.1:8080/admin
 
 ### Routes
-- *[GET]* Recommendations: `http://127.0.0.1:8080/recommend`
-- *[GET]* Teams Recommendations: `http://127.0.0.1:8080/recommend/1`
-- *[GET]* Days Recommendations: `http://127.0.0.1:8080/recommend/1/22/12/2021`
+- *[GET]* Recommendations: <a target="_blank href="http://127.0.0.1:8080/recommend">http://127.0.0.1:8080/recommend</a>
+- *[GET]* Teams Recommendations: <a target="_blank href="http://127.0.0.1:8080/recommend/1">http://127.0.0.1:8080/recommend/1</a>
+- *[GET]* Days Recommendations: <a target="_blank href="http://127.0.0.1:8080/recommend/1/22/12/2021">http://127.0.0.1:8080/recommend/1/22/12/2021</a>
 
 ## Frontend
 ### Installation & Start
