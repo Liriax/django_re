@@ -1,4 +1,4 @@
-import App from "./App"
+import Bar from "./Bar"
 import Title from "./Title"
 
-export {App, Title}
+export { Bar, Title }

@@ -19,6 +19,9 @@ export default function App() {
     }
 
     return (
+        <>
             <Bar />
+            {JSON.stringify(recommendations)}
+        </>
     )
 }
