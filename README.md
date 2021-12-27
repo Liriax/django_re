@@ -12,7 +12,6 @@ Recommendation engine test backend, database & frontend
     - macOS: `source ./venv/bin/activate`
     - Windows: `venv/Scripts/activate`
 - Install requirements: `pip install -r requirements.txt`
-- Open the folder: `cd administration`
 - Start backend: `python manage.py runserver 8080`
 - Create a user with: `python manage.py createsuperuser`
 - Open administration: http://127.0.0.1:8080/admin
