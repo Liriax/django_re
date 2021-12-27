@@ -6,7 +6,7 @@ class Recommendation(models.Model):
     description = models.TextField(blank=True)
     metric = models.ForeignKey(Metric,
                             on_delete=models.CASCADE,
-                            related_name='recommendations')
+                            related_name='recommendations', null=True)
     weight = models.FloatField(default=1)
     active = models.BooleanField(default=True)
     def __str__(self):
