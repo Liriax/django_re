@@ -26,11 +26,11 @@ class SuggestedRecommendation(models.Model):
     team = models.ForeignKey(Team,
                              on_delete=models.CASCADE,
                              related_name='recommendations')
-    confidence = models.FloatField(null=True) 
+    confidence = models.FloatField(blank=True,null=True) 
     # explicit feedback section:
-    updated_at = models.DateTimeField(null=True)
-    feedback = models.TextField(null=True)
-    score = models.IntegerField(choices=RecommendationScores.choices,null=True)
+    updated_at = models.DateTimeField(default=timezone.now)
+    feedback = models.TextField(blank=True)
+    score = models.IntegerField(choices=RecommendationScores.choices,blank=True,null=True)
        
     # weight/rank?
     class Meta:

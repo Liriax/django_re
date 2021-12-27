@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Bar } from "../components"
 import * as API from "../api"
-
+import Home from "../components/Home"
 export default function App() {
     const [recommendations, setRecommendations] = useState(null)
 
@@ -12,7 +12,7 @@ export default function App() {
     const fetchData = async () => {
         try {
             const response = await API.recommendations.team(1)
-            setRecommendations(await response.json())
+            setRecommendations(await response.data)
         } catch(error) {
             console.log(error)
         }
@@ -21,7 +21,7 @@ export default function App() {
     return (
         <>
             <Bar />
-            {JSON.stringify(recommendations)}
+            <Home />
         </>
     )
 }

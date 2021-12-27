@@ -4,12 +4,14 @@
  <h1>All Recommendations</h1>
  {% for recommendation in recommendations %}
  <h2>
- <a href="{{ recommendation.id }}">
+ <a href="{{ recommendation.recommendation.encoded_id }}">
  {{ recommendation.recommendation.headline }}
  </a>
  </h2>
- <p class="date">
- Created at {{ recommendation.created_at }} for {{ recommendation.team }}
+ <p>
+ Created at {{ recommendation.created_at }} for <a href="{{ recommendation.team.id }}">
+    {{ recommendation.team }}
+    </a>
  </p>
  {% comment %} {{ recommendation.recommendation|truncatewords:30|linebreaks }} {% endcomment %}
  {% endfor %}

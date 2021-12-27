@@ -4,8 +4,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { ThemeProvider } from "@mui/material/styles"
 import { CssBaseline } from "@mui/material"
 import { theme } from "./config"
-import { Home } from "./routes"
+// import { Home } from "./routes"
 import "./index.css"
+import Home from "./components/Home";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
     <React.StrictMode>

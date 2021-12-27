@@ -1,4 +1,6 @@
 import json
+from recommend.models import *
+
 def create_five_test_teams():
     teams = []
     for x in range(1,6):
@@ -68,6 +70,15 @@ def create_recommendations():
 #                                content_type=, #dora kpi or metric?
 #                                object_id=, #id of the dora kpi or metric
 #                                team=,)
+
+def create_data():
+    team1=Team(name="Team 1", contact_person="admin")
+    team1.save()
+    metric1=Metric(name="Metric 1", id=101)
+    metric1.save()
+    recommendation1 = Recommendation(encoded_id=10101, headline="Recommendation 1", metric=metric1)
+    recommendation1.save()
+    SuggestedRecommendation(recommendation=recommendation1, team=team1).save()
     
 if __name__=="__main__":
-    create_five_test_teams()
+    create_data()

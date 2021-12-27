@@ -1,9 +1,9 @@
 from django.db import models
 from .Metric import Metric
 class Recommendation(models.Model):
-    id = models.IntegerField(primary_key=True)
+    encoded_id = models.IntegerField(primary_key=True) # starts from 10101
     headline = models.CharField(max_length=250)
-    description = models.TextField(null=True)
+    description = models.TextField(blank=True)
     metric = models.ForeignKey(Metric,
                             on_delete=models.CASCADE,
                             related_name='recommendations')
