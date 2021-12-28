@@ -1,9 +1,79 @@
 import axios from "axios"
+import { common } from "../config"
 
-const recommendations = {
+const endpoints = {
+    edit: async (recommentation, data) => {
+        return await axios.put(`http://127.0.0.1:8080/recommend/api/${recommentation}`, data)
+    },
+    delete: async (recommentation) => {
+        return await axios.put(`http://127.0.0.1:8080/recommend/api/${recommentation}`)
+    },
     team: async (team) => {
         return await axios.get(`http://127.0.0.1:8080/recommend/api/team/${team}/`)
     }
 }
+
+const dummies = {
+    team: () => ({
+        data: [
+            {
+                "id": 1,
+                "recommendation": 10101,
+                "team": 1,
+                "created_at": "2021-12-27T03:32:19Z",
+                "status": "current",
+                "recommendation_headline": "Veniam quis nulla anim sunt nulla.",
+                "team_name": "Team 1"
+            },
+            {
+                "id": 2,
+                "recommendation": 10101,
+                "team": 1,
+                "created_at": "2021-12-27T03:32:19Z",
+                "status": "current",
+                "recommendation_headline": "Ullamco pariatur enim consectetur tempor dolore do.",
+                "team_name": "Team 1"
+            },
+            {
+                "id": 2,
+                "recommendation": 10101,
+                "team": 1,
+                "created_at": "2021-12-27T03:32:19Z",
+                "status": "current",
+                "recommendation_headline": "Eu anim fugiat et fugiat dolore fugiat quis commodo laboris.",
+                "team_name": "Team 1"
+            },
+            {
+                "id": 3,
+                "recommendation": 10101,
+                "team": 1,
+                "created_at": "2021-12-27T03:32:19Z",
+                "status": "implemented",
+                "recommendation_headline": "Cillum incididunt elit deserunt ex commodo nostrud.",
+                "team_name": "Team 1"
+            },
+            {
+                "id": 4,
+                "recommendation": 10101,
+                "team": 1,
+                "created_at": "2021-12-27T03:32:19Z",
+                "status": "implemented",
+                "recommendation_headline": "Quis incididunt eiusmod et tempor velit fugiat commodo consequat fugiat.",
+                "team_name": "Team 1"
+            },
+            {
+                "id": 4,
+                "recommendation": 10101,
+                "team": 1,
+                "created_at": "2021-12-27T03:32:19Z",
+                "status": "unapplicable",
+                "recommendation_headline": "Quis incididunt eiusmod et tempor velit fugiat commodo consequat fugiat.",
+                "team_name": "Team 1"
+            },
+        ]
+    })
+}
+
+const recommendations = common.useDummies ? dummies : endpoints
 
 export default recommendations

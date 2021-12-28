@@ -1,3 +1,4 @@
+import common from "./common"
 import theme from "./theme"
 
-export { theme }
+export { common, theme }
