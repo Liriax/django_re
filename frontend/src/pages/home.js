@@ -40,8 +40,8 @@ export default function Home() {
 		}
 	}
     
-    const handleClickRecommendation = (event, props) => {
-        navigate(`./recommendation/${props.id}`)
+    const handleClickRecommendation = (event, recommendation) => {
+        navigate(`./recommendation/${recommendation.id}`)
     }
 
     return (
