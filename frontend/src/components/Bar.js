@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem } from "@mui/material"
-import { Menu as MenuIcon } from "@mui/icons-material"
+import MenuIcon from "@mui/icons-material/Menu"
 
-const pages = ["Page"]
-const settings = ["Setting"]
+const pages = [""]
+const settings = [""]
 
 export default function Bar() {
 	const [openNavigation, setOpenNavigation] = useState(false)
@@ -51,7 +51,7 @@ export default function Bar() {
 					<Box sx={{flexGrow: 0}}>
 						<Tooltip title="Open settings">
 							<IconButton onClick={toggleSettings} sx={{p: 0}}>
-								<Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+								<Avatar alt="Name" src="" />
 							</IconButton>
 						</Tooltip>
 						<Menu keepMounted open={openSettings} onClose={toggleSettings} anchorOrigin={{vertical: "top", horizontal: "right"}} transformOrigin={{vertical: "top", horizontal: "right"}} sx={{mt: "45px"}} >

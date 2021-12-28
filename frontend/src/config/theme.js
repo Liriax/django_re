@@ -5,8 +5,7 @@ const theme = createTheme({
 		fontFamily: [
 			"Montserrat",
 		]
-	},
-	palette: {}
+	}
 })
 
 export default theme
