@@ -14,6 +14,7 @@ ReactDOM.render(
                 <CssBaseline />
                     <Routes>
                         <Route path="/" element={<Home />} />
+                        <Route path="/recommendation/:id" element={<Home />} />
                     </Routes>
             </ThemeProvider>
         </BrowserRouter>

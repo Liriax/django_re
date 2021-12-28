@@ -1,87 +1,80 @@
-import { useEffect, useState } from "react"
+import { PropTypes } from "prop-types"
 import { Box, Typography, Divider, Grid } from "@mui/material"
-import { Recommendation } from "./"
-import * as API from "../api"
+import { RecommendationCard } from "./"
 
-export default function RecommendationList() {
-	const [recommendations, setRecommendations] = useState([])
-
-	useEffect(() => {
-        console.log("fetch")
-		fetchRecommendations()
-	}, [])
-
-    const fetchRecommendations = async () => {
-		try {
-			const result = await API.recommendations.team(1)
-			setRecommendations(result.data)
-		} catch (error) {
-			console.log(error)
-		}
-	}
-
-    const filterRecommendationsByStatus = (status) => {
-        return recommendations.filter(recommendation => recommendation.status === status)
+export default function RecommendationList(props) {
+    const { recommendations, onClick } = props
+    
+    const sortRecommendationsByStatus = () => {
+        //Sort recommendations by status in object (sortedRecommendations.current, ...implemented, ...unapplicable)
+        return recommendations.reduce((sortedRecommendations, recommendation) => {
+            const recommendationStatus = sortedRecommendations[recommendation.status]
+            return {
+                ...sortedRecommendations,
+                [recommendation.status]: [
+                    ...(Array.isArray(recommendationStatus) ? recommendationStatus : []), 
+                    recommendation
+                ]
+            }
+        }, {})
     }
-
-    const renderRecommendationsByStatus = (status) => {
-        //TODO: Implement weight & date
-        const filteredRecommendations = filterRecommendationsByStatus(status)
-        if(filteredRecommendations.length >= 1) {
-            const lengthTerm = filteredRecommendations.length >= 2 ? "Recommendations" : "Recommendation"
-            return (
-                <>
-                    <Typography gutterBottom variant="subtitle1" sx={{display: "inline"}}> - {filteredRecommendations.length} {lengthTerm}</Typography>
-                    <Grid container spacing={2}>
-                        {filteredRecommendations.map(recommendation => {
-                            const { id, recommendation_headline, status, createdAt } = recommendation
-                            return (
-                                <Grid key={recommendation.id} item xl={2} lg={2} md={3} sm={6} xs={12}>
-                                    <Recommendation id={id} headline={recommendation_headline} status={status} date={createdAt} weight={parseInt(Math.random() * 100)} />
-                                </Grid>    
-                            )
-                        })}
-                    </Grid>
-                </>
-            )
-        } else {
-            return (
-                <>
-                    <Typography gutterBottom variant="subtitle1" sx={{display: "inline"}}> - 0 Recommendations</Typography>
-                    <Typography variant="h6">No recommendations found</Typography>
-                </>
-            )
-        }
-    }
+    const sortedRecommendations = sortRecommendationsByStatus()
 
 	return (
         <>
-            <Box sx={{width: "100%", padding: 2}}>
-                <Typography gutterBottom variant="h5" sx={{display: "inline"}}>Current</Typography>
-                {recommendations ?
-                    renderRecommendationsByStatus("current")
-                : 
-                    <Typography variant="h6">Loading recommendations</Typography>
-                }
-            </Box>
+            <RecommendationListCategory title="Current" recommendations={sortedRecommendations?.current} onClick={onClick} />
             <Divider />
-            <Box sx={{width: "100%", padding: 2}}>
-                <Typography gutterBottom variant="h5" sx={{display: "inline"}}>Implemented</Typography>
-                {recommendations ?
-                    renderRecommendationsByStatus("implemented")
-                : 
-                    <Typography variant="h6">Loading recommendations</Typography>
-                }
-            </Box>
+            <RecommendationListCategory title="Implemented" recommendations={sortedRecommendations?.implemented} onClick={onClick} />
             <Divider />
-            <Box sx={{width: "100%", padding: 2}}>
-                <Typography gutterBottom variant="h5" sx={{display: "inline"}}>Not applicable</Typography>
-                {recommendations ?
-                    renderRecommendationsByStatus("unapplicable")
-                : 
-                    <Typography variant="h6">Loading recommendations</Typography>
-                }
-            </Box>
+            <RecommendationListCategory title="Not applicable" recommendations={sortedRecommendations?.unapplicable} onClick={onClick} />
         </>
 	)
+}
+
+function RecommendationListCategory(props) {
+    const { title, recommendations, onClick } = props
+    
+    const available = () => {
+        return recommendations.length >= 1
+    }
+
+    const count = () => {
+        if(recommendations.length === 1) {
+            return `${recommendations.length} Recommendation`
+        } else {
+            return `${recommendations.length || 0} Recommendations`
+        }
+    }
+
+    return (
+        <Box sx={{width: "100%", padding: 2}}>
+            <Typography gutterBottom variant="h5" sx={{display: "inline"}}>{title}</Typography>
+            <Typography gutterBottom variant="subtitle1" sx={{display: "inline"}}> - {count()}</Typography>
+            {available() ?
+                <Grid container spacing={2}>
+                    {recommendations.map(recommendation => {
+                        const { id, recommendation_headline, status, createdAt } = recommendation
+                        return (
+                            <Grid key={id} item xl={2} lg={2} md={3} sm={6} xs={12}>
+                                <RecommendationCard id={id} headline={recommendation_headline} status={status} date={createdAt} score={parseInt(Math.random() * 100)} onClick={onClick?.recommendation} />
+                            </Grid>    
+                        )
+                    })}
+                </Grid>
+            :
+                <Typography variant="h6">No recommendations found</Typography>
+            }
+        </Box>
+    )
+}
+
+RecommendationList.propTypes = {
+    recommendations: PropTypes.array,
+    onClick: PropTypes.object
+}
+
+RecommendationListCategory.propTypes = {
+    title: PropTypes.string,
+    recommendations: PropTypes.array,
+    onClick: PropTypes.object,
 }

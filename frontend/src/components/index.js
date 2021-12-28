@@ -1,6 +1,8 @@
 import Bar from "./Bar"
-import Recommendation from "./Recommendation"
+import Overlay from "./Overlay"
+import RecommendationCard from "./RecommendationCard"
+import RecommendationDetails from "./RecommendationDetails"
 import RecommendationList from "./RecommendationList"
 import Title from "./Title"
 
-export { Bar, Recommendation, RecommendationList, Title }
+export { Bar, Overlay, RecommendationCard, RecommendationDetails, RecommendationList, Title }
