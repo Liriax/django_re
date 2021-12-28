@@ -22,7 +22,7 @@ export default function Bar() {
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
 					<Typography noWrap variant="h6" component="div" sx={{mr: 2, display: {xs: "none", md: "flex"}}}>
-                        <img width="50%" src="logo.png" alt="Logo" />
+                        <img width="50%" src="/logo.png" alt="Logo" />
 					</Typography>
 					<Box sx={{flexGrow: 1, display: {xs: "flex", md: "none"}}}>
 						<IconButton onClick={toggleNavigation} size="large" aria-haspopup="true" color="inherit">
