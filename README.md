@@ -36,6 +36,7 @@ Recommendation engine test backend, database & frontend
 ### Storybook
 - Start Storybook: `npm run storybook`
 
-### Github Pages
+### GitHub Pages
+- Override dummies: `frontend > config > > common.js > API > overrideDummies: true` 
 - Deploy: `npm run deploy`
 - Open frontend: https://liriax.github.io/django_re
