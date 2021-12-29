@@ -37,5 +37,5 @@ Recommendation engine test backend, database & frontend
 - Start Storybook: `npm run storybook`
 
 ### Github Pages
-- Deploy: npm run deploy 
+- Deploy: `npm run deploy`
 - Open frontend: https://liriax.github.io/django_re
