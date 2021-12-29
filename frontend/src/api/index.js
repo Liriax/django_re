@@ -1,3 +1,3 @@
-import recommendations from "./recommendations"
+import recommendations from "./recommendations";
 
-export { recommendations }
+export { recommendations };
