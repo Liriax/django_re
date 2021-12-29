@@ -5,7 +5,7 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
-from .serializers import SuggestedRecommendationSerializer
+from .serializers import SuggestedRecommendationSerializer, MeasurementSerializer
 from .Recommender import Recommender
 
 
@@ -97,3 +97,14 @@ def api_recommendations_team(request, id):
 class DetailSuggestedRecommendations(generics.RetrieveUpdateDestroyAPIView):
     queryset = SuggestedRecommendation.objects.all()
     serializer_class = SuggestedRecommendationSerializer
+
+@api_view(['GET'])
+def api_dora_kpi(request, id):
+    try:
+        team = Team.objects.get(id=id)
+        data = Measurement.objects.filter(team=team).filter(measured_at = request.date)
+    except:
+        print(f'error getting dora kpis for team {id}')
+        data = []
+    serializer = MeasurementSerializer(data, context={'request': request}, many=True)
+    return Response(serializer.data)

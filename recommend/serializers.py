@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Recommendation, SuggestedRecommendation
+from .models import SuggestedRecommendation, Measurement
 
 class SuggestedRecommendationSerializer(serializers.ModelSerializer):
     recommendation_headline = serializers.CharField(source='recommendation.headline')
@@ -15,3 +15,15 @@ class SuggestedRecommendationSerializer(serializers.ModelSerializer):
             'team_name'
         )
         model = SuggestedRecommendation
+
+
+class MeasurementSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields=(
+            'id',
+            'measured_at',
+            'measured_metrics',
+            'value',
+            'team'
+        )
+        model=Measurement
