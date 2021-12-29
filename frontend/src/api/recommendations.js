@@ -2,11 +2,11 @@ import axios from "axios";
 import { common } from "../config";
 
 const endpoints = {
-  edit: async (recommentation, data) => {
-    return await axios.put(`${common.API.backend}/${recommentation}`, data);
+  edit: async (recommendation, data) => {
+    return await axios.put(`${common.API.backend}/${recommendation}`, data);
   },
-  delete: async (recommentation) => {
-    return await axios.put(`${common.API.backend}/${recommentation}`);
+  delete: async (recommendation) => {
+    return await axios.put(`${common.API.backend}/${recommendation}`);
   },
   recommendation: async (id) => {
     return await axios.get(`${common.API.backend}/recommend/${id}`);
