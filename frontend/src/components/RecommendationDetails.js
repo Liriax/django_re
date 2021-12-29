@@ -1,8 +1,10 @@
+import { Button } from "@mui/material";
+
 export default function RecommendationDetails(props) {
   const { recommendation, onClose } = props;
   return (
     <div>
-      <button onClick={onClose}>close</button>
+      <Button onClick={onClose}>close</Button>
       <div>{JSON.stringify(recommendation)}</div>
     </div>
   );

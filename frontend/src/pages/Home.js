@@ -66,7 +66,7 @@ export default function Home() {
             <Overlay>
               <RecommendationDetails
                 recommendation={recommendation}
-                onClose={() => handleCloseRecommendation()}
+                onClose={handleCloseRecommendation}
               />
             </Overlay>
           )}
