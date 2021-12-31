@@ -1,11 +1,11 @@
-import { Backdrop } from "@mui/material"
+import { Backdrop } from "@mui/material";
 
 export default function Overlay(props) {
-    const { children } = props
+  const { children } = props;
 
-    return (
-        <Backdrop sx={{ color: "#fff"}} open>
-            {children}
-        </Backdrop>
-    )
+  return (
+    <Backdrop sx={{ color: "#fff" }} open>
+      {children}
+    </Backdrop>
+  );
 }
