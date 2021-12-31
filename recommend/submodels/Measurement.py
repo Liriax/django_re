@@ -27,4 +27,4 @@ class Measurement (models.Model):
                              related_name='metric_history')
 
     def __str__(self):
-        return f"Metric {self.measured_metric} measured at {self.measured_at} for team {self.team.name}"
+        return f"Metric {self.measured_metric.name} measured at {self.measured_at} for team {self.team.name}"
