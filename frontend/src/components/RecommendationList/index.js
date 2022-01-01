@@ -47,14 +47,14 @@ function RecommendationListCategory(props) {
   const { title, recommendations, onClick } = props;
 
   const available = () => {
-    return recommendations.length >= 1;
+    return recommendations?.length >= 1;
   };
 
   const count = () => {
-    if (recommendations.length === 1) {
+    if (recommendations?.length === 1) {
       return `${recommendations.length} Recommendation`;
     } else {
-      return `${recommendations.length || 0} Recommendations`;
+      return `${recommendations?.length || 0} Recommendations`;
     }
   };
 
