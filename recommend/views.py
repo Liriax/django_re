@@ -102,7 +102,7 @@ class DetailSuggestedRecommendations(generics.RetrieveUpdateDestroyAPIView):
 def api_dora_kpi(request, id, measurement_id):
     try:
         team = Team.objects.get(id=id)
-        data = Measurement.objects.filter(team=team).filter(id=measurement_id)
+        data = Measurement.objects.filter(team=team).filter(object_id=measurement_id)
     except:
         print(f'error getting dora kpis for team {id}')
         data = []
