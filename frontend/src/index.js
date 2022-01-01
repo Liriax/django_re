@@ -1,22 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { HashRouter, Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "@mui/material/styles";
-import { CssBaseline } from "@mui/material";
-import { theme } from "./config";
 import { Home } from "./pages";
-import "./index.css";
+import "./index.scss";
 
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/recommendation/:id" element={<Home />} />
-        </Routes>
-      </ThemeProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/recommendation/:id" element={<Home />} />
+      </Routes>
     </HashRouter>
   </React.StrictMode>,
   document.getElementById("root")

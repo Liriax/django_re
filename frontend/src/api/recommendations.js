@@ -55,8 +55,7 @@ const dummies = {
         team: 1,
         created_at: "2021-12-27T03:32:19Z",
         status: "current",
-        recommendation_headline:
-          "Eu anim fugiat et fugiat dolore fugiat quis commodo laboris.",
+        recommendation_headline: "Nostrud eu laborum ut fugiat.",
         team_name: "Team 1",
       },
       {
@@ -76,7 +75,7 @@ const dummies = {
         created_at: "2021-12-27T03:32:19Z",
         status: "implemented",
         recommendation_headline:
-          "Quis incididunt eiusmod et tempor velit fugiat commodo consequat fugiat.",
+          "Magna in dolor amet et veniam nostrud elit eu.",
         team_name: "Team 1",
       },
       {
@@ -86,7 +85,7 @@ const dummies = {
         created_at: "2021-12-27T03:32:19Z",
         status: "unapplicable",
         recommendation_headline:
-          "Quis incididunt eiusmod et tempor velit fugiat commodo consequat fugiat.",
+          "Ullamco voluptate ea voluptate exercitation esse ullamco.",
         team_name: "Team 1",
       },
     ],

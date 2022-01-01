@@ -1,6 +1,6 @@
 import { PropTypes } from "prop-types";
-import { Box, Typography, Divider, Grid } from "@mui/material";
-import { RecommendationCard } from "./";
+import { RecommendationCard } from "../";
+import "./recommendationList.scss";
 
 export default function RecommendationList(props) {
   const { recommendations, onClick } = props;
@@ -21,25 +21,25 @@ export default function RecommendationList(props) {
   const sortedRecommendations = sortRecommendationsByStatus();
 
   return (
-    <>
+    <div className="recommendationList">
       <RecommendationListCategory
         title="Current"
         recommendations={sortedRecommendations?.current}
         onClick={onClick}
       />
-      <Divider />
+      <hr />
       <RecommendationListCategory
         title="Implemented"
         recommendations={sortedRecommendations?.implemented}
         onClick={onClick}
       />
-      <Divider />
+      <hr />
       <RecommendationListCategory
         title="Not applicable"
         recommendations={sortedRecommendations?.unapplicable}
         onClick={onClick}
       />
-    </>
+    </div>
   );
 }
 
@@ -59,37 +59,33 @@ function RecommendationListCategory(props) {
   };
 
   return (
-    <Box sx={{ width: "100%", padding: 2 }}>
-      <Typography gutterBottom variant="h5" sx={{ display: "inline" }}>
-        {title}
-      </Typography>
-      <Typography gutterBottom variant="subtitle1" sx={{ display: "inline" }}>
-        {" "}
-        - {count()}
-      </Typography>
-      {available() ? (
-        <Grid container spacing={2}>
-          {recommendations.map((recommendation) => {
+    <div className="recommendationCategory">
+      <div className="title">
+        <h2 className="name">{title}</h2>
+        <h3 className="count"> - {count()}</h3>
+      </div>
+      <div className="content">
+        {available() ? (
+          recommendations.map((recommendation) => {
             const { id, recommendation_headline, status, createdAt } =
               recommendation;
             return (
-              <Grid key={id} item xl={2} lg={2} md={3} sm={6} xs={12}>
-                <RecommendationCard
-                  id={id}
-                  headline={recommendation_headline}
-                  status={status}
-                  date={createdAt}
-                  score={parseInt(Math.random() * 100)}
-                  onClick={onClick?.recommendation}
-                />
-              </Grid>
+              <RecommendationCard
+                key={id}
+                id={id}
+                headline={recommendation_headline}
+                status={status}
+                date={createdAt}
+                score={parseInt(Math.random() * 100)}
+                onClick={onClick?.recommendation}
+              />
             );
-          })}
-        </Grid>
-      ) : (
-        <Typography variant="h6">No recommendations found</Typography>
-      )}
-    </Box>
+          })
+        ) : (
+          <h6>No recommendations found</h6>
+        )}
+      </div>
+    </div>
   );
 }
 
