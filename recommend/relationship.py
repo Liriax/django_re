@@ -1,5 +1,4 @@
-
-low_level_metrics = {
+{
     # dora kpis:
     "projector_deployment[deployment_status]":["Change failure rate",
                                                "Deployment frequency",
