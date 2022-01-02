@@ -1,0 +1,91 @@
+@import "../../vars";
+
+.recommendationDetails {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  background: rgba(26, 26, 26, 0.9);
+  padding: 1.25em;
+  backdrop-filter: blur(12px);
+  animation: fade 0.3s;
+
+  > .close {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    border-radius: 6px;
+    border: 1px solid $font_light_color;
+    color: $font_light_color;
+    padding: 0.5em;
+    cursor: pointer;
+  }
+
+  > .recommendation {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media only screen and (max-width: $breakpoint) {
+      display: none;
+    }
+
+    > .recommendationCard {
+      width: 350px;
+      height: 250px;
+    }
+
+    > .actions div {
+      border-radius: 6px;
+      border: 1px solid $font_light_color;
+      padding: 0.5em;
+      cursor: pointer;
+      display: inline-block;
+      margin: 0.5em;
+
+      &.implement {
+        color: #0be881;
+        border-color: #0be881;
+      }
+
+      &.unapplicable {
+        color: #ffa801;
+        border-color: #ffa801;
+      }
+    }
+  }
+
+  .description {
+    width: 60%;
+    height: 100%;
+    color: $font_light_color;
+    overflow: scroll;
+
+    @media only screen and (min-width: $breakpoint) {
+      padding: 4em 4em;
+      width: 60%;
+    }
+
+    @media only screen and (max-width: $breakpoint) {
+      padding: 3em 1em;
+      width: 100%;
+    }
+
+    > .title {
+      font-size: 2em;
+    }
+
+    > .text {
+      margin-bottom: 2em;
+      margin: 1em 0em 2em 0em;
+    }
+  }
+}

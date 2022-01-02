@@ -1,0 +1,50 @@
+@import "./vars";
+
+*,
+::after,
+::before {
+  box-sizing: inherit;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+::selection {
+  background: $company_color;
+  color: $font_light_color;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: $font_family, sans-serif;
+  height: 100vh;
+  background: $background_first_color;
+  color: $font_dark_color;
+  margin: 0;
+}
+
+#root {
+  height: 100%;
+}
+
+.center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

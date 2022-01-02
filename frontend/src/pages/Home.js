@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import {
-  Bar,
-  RecommendationDetails,
-  RecommendationList,
-  Overlay,
-} from "../components";
+import { Bar, RecommendationDetails, RecommendationList } from "../components";
 import * as API from "../api";
 
 export default function Home() {
@@ -38,7 +33,6 @@ export default function Home() {
   const fetchRecommendation = async () => {
     try {
       const result = await API.recommendations.recommendation(id);
-      console.log(result.data);
       setRecommendation(result.data);
     } catch (error) {
       console.log(error);
@@ -46,11 +40,19 @@ export default function Home() {
   };
 
   const handleClickRecommendation = (event, recommendation) => {
-    navigate(`./recommendation/${recommendation.id}`);
+    navigate(`/recommendation/${recommendation.id}`);
   };
 
   const handleCloseRecommendation = () => {
-    navigate(`../`);
+    navigate("../");
+  };
+
+  const handleClickImplement = () => {
+    alert("TODO: Implement");
+  };
+
+  const handleClickUnapliccable = () => {
+    alert("TODO: Not Appliccable");
   };
 
   return (
@@ -63,12 +65,14 @@ export default function Home() {
             onClick={{ recommendation: handleClickRecommendation }}
           />
           {recommendation && (
-            <Overlay>
-              <RecommendationDetails
-                recommendation={recommendation}
-                onClose={handleCloseRecommendation}
-              />
-            </Overlay>
+            <RecommendationDetails
+              recommendation={recommendation}
+              onClick={{
+                implement: handleClickImplement,
+                unapliccable: handleClickUnapliccable,
+                close: handleCloseRecommendation,
+              }}
+            />
           )}
         </>
       ) : (
