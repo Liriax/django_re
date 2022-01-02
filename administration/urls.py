@@ -18,9 +18,9 @@ from .settings import FUNCTION_APP_PATH
 from django.contrib import admin
 from django.urls import path, include
 urlpatterns = [
-    path(FUNCTION_APP_PATH+'/',index),
-    path(FUNCTION_APP_PATH+'/admin/', admin.site.urls),
-    path(FUNCTION_APP_PATH+'/recommend/', include('recommend.urls',namespace='recommend')),
+    # path(FUNCTION_APP_PATH+'/',index),
+    # path(FUNCTION_APP_PATH+'/admin/', admin.site.urls),
+    # path(FUNCTION_APP_PATH+'/recommend/', include('recommend.urls',namespace='recommend')),
     path("", index, name="index"),
     path('admin/', admin.site.urls),
     path('recommend/', include('recommend.urls',namespace='recommend')),
