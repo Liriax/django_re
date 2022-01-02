@@ -24,7 +24,7 @@ export default function RecommendationList(props) {
     <div className="recommendationList">
       <RecommendationListCategory
         title="Current"
-        recommendations={sortedRecommendations?.current}
+        recommendations={sortedRecommendations?.suggested}
         onClick={onClick}
       />
       <hr />
@@ -36,7 +36,7 @@ export default function RecommendationList(props) {
       <hr />
       <RecommendationListCategory
         title="Not applicable"
-        recommendations={sortedRecommendations?.unapplicable}
+        recommendations={sortedRecommendations?.rejected}
         onClick={onClick}
       />
     </div>
