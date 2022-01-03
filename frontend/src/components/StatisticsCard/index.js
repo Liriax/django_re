@@ -22,7 +22,7 @@ export default function StatisticsCard(props) {
   return (
     <div className="statisticsCard" onClick={handleClickRecommendation}>
       <div className="statisticsContent" style={style()}>
-        <div>{headline}</div>
+        <div className="headline">{headline}</div>
         <div className="statisticsContainer">
           <div
             style={{
