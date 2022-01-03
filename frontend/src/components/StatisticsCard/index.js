@@ -2,7 +2,7 @@ import { PropTypes } from "prop-types";
 import "./statisticsCard.scss";
 
 export default function StatisticsCard(props) {
-  const { /*id,*/ headline, status, /*date,*/ score, onClick } = props;
+  const { /*id,*/ headline, status, /*date,*/ /*score,*/ onClick } = props;
 
   const handleClickRecommendation = (event) => {
     onClick && onClick(event, props);
@@ -13,7 +13,7 @@ export default function StatisticsCard(props) {
       borderBottomColor:
         status === "implemented"
           ? "#0be881"
-          : status === "unapplicable"
+          : status === "rejected"
           ? "#ffa801"
           : "#3c40c6",
     };

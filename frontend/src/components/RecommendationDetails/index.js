@@ -1,4 +1,5 @@
-import { RecommendationCard, StatisticsCard } from "../";
+import { PropTypes } from "prop-types";
+import { Button, RecommendationCard, /*StatisticsCard,*/ Title } from "../";
 import "./recommendationDetails.scss";
 
 export default function RecommendationDetails(props) {
@@ -6,52 +7,46 @@ export default function RecommendationDetails(props) {
   const { id, recommendation_headline, status, createdAt } = recommendation;
   const {
     implement: onClickImplement,
-    unapliccable: onClickUnapplicable,
+    unapliccable: onClickReject,
     close: onClickClose,
   } = onClick;
 
   const handleClickImplement = () => {
-    onClickImplement(id)
-  }
+    onClickImplement(id);
+  };
 
-  const handleClickUnapplicable = () => {
-    onClickUnapplicable(id)
-  }
+  const handleClickReject = () => {
+    onClickReject(id);
+  };
 
   return (
     <div className="recommendationDetails">
-      <div className="close" onClick={onClickClose}>
+      <Button className="close" color="light" onClick={onClickClose}>
         Go back
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          marginTop: "2em",
-        }}
-      >
+      </Button>
+      <div className="content">
         <div className="recommendation">
           <RecommendationCard
             headline={recommendation_headline}
             status={status}
             date={createdAt}
             score={parseInt(Math.random() * 100)}
-            width="auto"
           />
           <div className="actions">
-            <div onClick={handleClickImplement} className="implement">
+            <Button inline onClick={handleClickImplement} color="success">
               Implement
-            </div>
-            <div onClick={handleClickUnapplicable} className="unapplicable">
-              Not applicable
-            </div>
+            </Button>
+            <Button inline onClick={handleClickReject} color="warning">
+              Reject
+            </Button>
           </div>
+          {/* <StatisticsCard headline="Statistics" /> */}
         </div>
+        <hr />
         <div className="description">
-          <div className="title">Sunt irure fugiat pariatur minim.</div>
+          <Title color="light" size="medium">
+            Sunt irure fugiat pariatur minim.
+          </Title>
           <div className="text">
             Cillum adipisicing officia nulla in. Voluptate incididunt occaecat
             amet Lorem ut enim esse aute mollit aliquip. Nostrud exercitation
@@ -60,7 +55,9 @@ export default function RecommendationDetails(props) {
             minim. Consectetur esse elit reprehenderit consectetur pariatur
             culpa. Qui ex sunt id elit.
           </div>
-          <div className="title">Minim veniam aute est.</div>
+          <Title color="light" size="medium">
+            Minim veniam aute est.
+          </Title>
           <div className="text">
             Cillum adipisicing officia nulla in. Voluptate incididunt occaecat
             amet Lorem ut enim esse aute mollit aliquip. Nostrud exercitation
@@ -71,7 +68,11 @@ export default function RecommendationDetails(props) {
           </div>
         </div>
       </div>
-      <StatisticsCard headline="Statistics" />
     </div>
   );
 }
+
+RecommendationDetails.propTypes = {
+  recommendation: PropTypes.object,
+  onClick: PropTypes.object,
+};

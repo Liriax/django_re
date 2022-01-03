@@ -1,42 +1,42 @@
 import { PropTypes } from "prop-types";
-import { RecommendationCard } from "../";
+import { RecommendationCard, Title } from "../";
 import "./recommendationList.scss";
 
 export default function RecommendationList(props) {
   const { recommendations, onClick } = props;
 
-  const sortRecommendationsByStatus = () => {
-    //Sort recommendations by status in object (sortedRecommendations.current, ...implemented, ...unapplicable)
-    return recommendations.reduce((sortedRecommendations, recommendation) => {
-      const recommendationStatus = sortedRecommendations[recommendation.status];
+  const sortRecommendationCategories = () => {
+    //Sort recommendations by status in object (sortedRecommendations.suggested, ...implemented, ...rejected)
+    return recommendations.reduce((categories, recommendation) => {
+      const category = categories[recommendation.status];
       return {
-        ...sortedRecommendations,
+        ...categories,
         [recommendation.status]: [
-          ...(Array.isArray(recommendationStatus) ? recommendationStatus : []),
+          ...(Array.isArray(category) ? category : []),
           recommendation,
         ],
       };
     }, {});
   };
-  const sortedRecommendations = sortRecommendationsByStatus();
+  const recommendationCategories = sortRecommendationCategories();
 
   return (
     <div className="recommendationList">
       <RecommendationListCategory
-        title="Current"
-        recommendations={sortedRecommendations?.suggested}
+        title="Suggested"
+        recommendations={recommendationCategories?.suggested}
         onClick={onClick}
       />
       <hr />
       <RecommendationListCategory
         title="Implemented"
-        recommendations={sortedRecommendations?.implemented}
+        recommendations={recommendationCategories?.implemented}
         onClick={onClick}
       />
       <hr />
       <RecommendationListCategory
-        title="Not applicable"
-        recommendations={sortedRecommendations?.rejected}
+        title="Rejected"
+        recommendations={recommendationCategories?.rejected}
         onClick={onClick}
       />
     </div>
@@ -61,12 +61,16 @@ function RecommendationListCategory(props) {
   return (
     <div className="recommendationCategory">
       <div className="title">
-        <h2 className="name">{title}</h2>
-        <h3 className="count"> - {count()}</h3>
+        <Title inline className="name" color="dark">
+          {title}
+        </Title>
+        <Title inline className="count" color="dark" size="small">
+          {count()}
+        </Title>
       </div>
-      <div className="content">
-        {available() ? (
-          recommendations.map((recommendation) => {
+      {available() ? (
+        <div className="list">
+          {recommendations.map((recommendation) => {
             const { id, recommendation_headline, status, createdAt } =
               recommendation;
             return (
@@ -80,11 +84,13 @@ function RecommendationListCategory(props) {
                 onClick={onClick?.recommendation}
               />
             );
-          })
-        ) : (
-          <h6>No recommendations found</h6>
-        )}
-      </div>
+          })}
+        </div>
+      ) : (
+        <Title className="empty" color="dark" size="small">
+          No recommendations found
+        </Title>
+      )}
     </div>
   );
 }

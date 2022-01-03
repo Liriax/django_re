@@ -1,22 +1,21 @@
-// import { NavLink } from "react-router-dom";
+import { Title } from "../";
 import "./bar.scss";
 
-const Navigation = (props) => {
+const Bar = () => {
   return (
-    <div className="navigation">
-      <ul className="items">
-        <li className="logo">
+    <div className="bar">
+      <div className="items">
+        <div className="item logo">
           <img alt="logo" src="./logo.png"></img>
-        </li>
-        {/* <NavLink className="link" to={`/`} activeClassName="active">
-                    <li className="item">
-                        <img alt={"title"} className="icon" src={`./icons/`}></img>
-                        <span className="title">Title</span>
-                    </li>
-                </NavLink> */}
-      </ul>
+        </div>
+        <div className="item text">
+          <Title color="light" size="small">
+            Team 1
+          </Title>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Navigation;
+export default Bar;
