@@ -1,4 +1,4 @@
-import { RecommendationCard } from "../";
+import { RecommendationCard, StatisticsCard } from "../";
 import "./recommendationDetails.scss";
 
 export default function RecommendationDetails(props) {
@@ -15,51 +15,55 @@ export default function RecommendationDetails(props) {
       <div className="close" onClick={onClickClose}>
         Go back
       </div>
-      <div className="recommendation">
-        <RecommendationCard
-          headline={recommendation_headline}
-          status={status}
-          date={createdAt}
-          score={parseInt(Math.random() * 100)}
-        />
-        <div className="actions">
-          <div onClick={onClickImplement} className="implement">
-            Implement
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: "2em",
+        }}
+      >
+        <div className="recommendation">
+          <RecommendationCard
+            headline={recommendation_headline}
+            status={status}
+            date={createdAt}
+            score={parseInt(Math.random() * 100)}
+            width="auto"
+          />
+          <div className="actions">
+            <div onClick={onClickImplement} className="implement">
+              Implement
+            </div>
+            <div onClick={onClickUnapplicable} className="unapplicable">
+              Not applicable
+            </div>
           </div>
-          <div onClick={onClickUnapplicable} className="unapplicable">
-            Not applicable
+        </div>
+        <div className="description">
+          <div className="title">Sunt irure fugiat pariatur minim.</div>
+          <div className="text">
+            Cillum adipisicing officia nulla in. Voluptate incididunt occaecat
+            amet Lorem ut enim esse aute mollit aliquip. Nostrud exercitation
+            consectetur id eu ipsum fugiat quis. Deserunt tempor Lorem consequat
+            cupidatat mollit. Et reprehenderit qui laborum nulla laboris dolor
+            minim. Consectetur esse elit reprehenderit consectetur pariatur
+            culpa. Qui ex sunt id elit.
+          </div>
+          <div className="title">Minim veniam aute est.</div>
+          <div className="text">
+            Cillum adipisicing officia nulla in. Voluptate incididunt occaecat
+            amet Lorem ut enim esse aute mollit aliquip. Nostrud exercitation
+            consectetur id eu ipsum fugiat quis. Deserunt tempor Lorem consequat
+            cupidatat mollit. Et reprehenderit qui laborum nulla laboris dolor
+            minim. Consectetur esse elit reprehenderit consectetur pariatur
+            culpa. Qui ex sunt id elit.
           </div>
         </div>
       </div>
-      <div className="description">
-        <div className="title">Sunt irure fugiat pariatur minim.</div>
-        <div className="text">
-          Cillum adipisicing officia nulla in. Voluptate incididunt occaecat
-          amet Lorem ut enim esse aute mollit aliquip. Nostrud exercitation
-          consectetur id eu ipsum fugiat quis. Deserunt tempor Lorem consequat
-          cupidatat mollit. Et reprehenderit qui laborum nulla laboris dolor
-          minim. Consectetur esse elit reprehenderit consectetur pariatur culpa.
-          Qui ex sunt id elit.
-        </div>
-        <div className="title">Minim veniam aute est.</div>
-        <div className="text">
-          Cillum adipisicing officia nulla in. Voluptate incididunt occaecat
-          amet Lorem ut enim esse aute mollit aliquip. Nostrud exercitation
-          consectetur id eu ipsum fugiat quis. Deserunt tempor Lorem consequat
-          cupidatat mollit. Et reprehenderit qui laborum nulla laboris dolor
-          minim. Consectetur esse elit reprehenderit consectetur pariatur culpa.
-          Qui ex sunt id elit.
-        </div>
-        <div className="title">Dolore culpa Lorem aliqua .</div>
-        <div className="text">
-          Cillum adipisicing officia nulla in. Voluptate incididunt occaecat
-          amet Lorem ut enim esse aute mollit aliquip. Nostrud exercitation
-          consectetur id eu ipsum fugiat quis. Deserunt tempor Lorem consequat
-          cupidatat mollit. Et reprehenderit qui laborum nulla laboris dolor
-          minim. Consectetur esse elit reprehenderit consectetur pariatur culpa.
-          Qui ex sunt id elit.
-        </div>
-      </div>
+      <StatisticsCard headline="Statistics" />
     </div>
   );
 }

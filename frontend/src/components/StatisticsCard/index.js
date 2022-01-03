@@ -1,8 +1,8 @@
 import { PropTypes } from "prop-types";
-import "./recommendationCard.scss";
+import "./statisticsCard.scss";
 
-export default function RecommendationCard(props) {
-  const { /*id,*/ headline, status, /*date,*/ score, onClick, width } = props;
+export default function StatisticsCard(props) {
+  const { /*id,*/ headline, status, /*date,*/ score, onClick } = props;
 
   const handleClickRecommendation = (event) => {
     onClick && onClick(event, props);
@@ -20,27 +20,28 @@ export default function RecommendationCard(props) {
   };
 
   return (
-    <div
-      className="recommendationCard"
-      onClick={handleClickRecommendation}
-      style={{ width: width }}
-    >
-      <div className="recommendationContent" style={style()}>
+    <div className="statisticsCard" onClick={handleClickRecommendation}>
+      <div className="statisticsContent" style={style()}>
         <div className="text">{headline}</div>
-        <div className="weights">
-          <div className="first weight">{score} %</div>
+        <div className="statisticsContainer">
+          <div className="statisticsRow">
+            <div>Received: </div>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+          </div>
+          <div className="statisticsRow">implemented</div>
         </div>
       </div>
     </div>
   );
 }
 
-RecommendationCard.propTypes = {
+StatisticsCard.propTypes = {
   id: PropTypes.number,
   headline: PropTypes.string,
   status: PropTypes.string,
   date: PropTypes.string,
   score: PropTypes.number,
   onClick: PropTypes.func,
-  width: PropTypes.string,
 };

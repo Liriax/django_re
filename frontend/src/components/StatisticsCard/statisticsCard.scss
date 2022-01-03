@@ -1,0 +1,84 @@
+@import "../../vars";
+
+.statisticsCard {
+  display: flex;
+  flex-direction: column;
+  align-self: center !important;
+  padding: 0.5em;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  transition: all 0.2s ease-out;
+
+  @media only screen and (min-width: $breakpoint) {
+    // i dont know why the width in percent acts up
+    width: 350px; //17.5%;
+    height: 200px;
+  }
+
+  @media only screen and (max-width: $breakpoint) {
+    width: 100%;
+    height: 200px;
+  }
+
+  &:hover {
+    padding-top: 0em;
+    padding-bottom: 0em;
+  }
+
+  > .statisticsContent {
+    position: relative;
+    flex: 1 0 auto;
+    padding: 1em;
+    overflow: hidden;
+    border: 1px solid;
+    border-bottom: 2px solid;
+    border-color: #d2dae2;
+    background: $background_thrd_color;
+    border-radius: 3px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+      rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    margin-bottom: 1em;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+
+    > .text {
+      position: absolute;
+      left: 0;
+      top: 20%;
+      width: 100%;
+      padding: 0 2px 0 2px;
+      text-align: center;
+      z-index: 1;
+    }
+
+    > .weights {
+      position: absolute;
+      left: 0;
+      top: 70%;
+      width: 100%;
+      text-align: center;
+
+      > .weight {
+        border: 1px solid;
+        display: inline-block;
+        padding: 0.4em;
+        margin: 0.1em;
+        border-radius: 6px;
+        border-color: lightgray;
+      }
+    }
+  }
+
+  .statisticsContainer {
+    position: absolute;
+    top: 50%;
+    padding: 0 2px 0 2px;
+
+    > .statisticsRow {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}
