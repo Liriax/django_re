@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import SuggestedRecommendation, Measurement
+from .models import SuggestedRecommendation, Measurement, Metric, Dora_kpi
 
 class SuggestedRecommendationSerializer(serializers.ModelSerializer):
     recommendation_headline = serializers.CharField(source='recommendation.headline')

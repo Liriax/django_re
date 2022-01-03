@@ -1,0 +1,59 @@
+@import "../../vars";
+
+.statisticsCard {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  flex-grow: 1;
+  flex-shrink: 0;
+  width: 100%;
+  flex-basis: auto;
+  align-self: auto;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    padding-top: 0em;
+    padding-bottom: 0em;
+  }
+
+  > .statisticsContent {
+    display: flex;
+    justify-content: center;
+    flex: 1 0 auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+    overflow: hidden;
+    border: 1px solid;
+    border-bottom: 2px solid;
+    border-color: #d2dae2;
+    background: $background_thrd_color;
+    border-radius: 3px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+      rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    margin-bottom: 1em;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+  }
+
+  .statisticsContainer {
+    padding: 0 2px 0 2px;
+  }
+
+  .statItem {
+    display: flex;
+    justify-content: center;
+  }
+
+  .statHeading {
+    text-align: center;
+  }
+
+  .rowHeading {
+    text-align: right;
+  }
+
+  .headline {
+    font-size: 30px;
+  }
+}

@@ -47,12 +47,20 @@ export default function Home() {
     navigate("../");
   };
 
-  const handleClickImplement = () => {
-    alert("TODO: Implement");
+  const handleClickImplement = (id) => {
+    try {
+      API.recommendations.edit(id, { status: "REJECTED" });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleClickUnapliccable = () => {
-    alert("TODO: Not Appliccable");
+  const handleClickInapplicable = (id) => {
+    try {
+      API.recommendations.edit(id, { status: "REJECTED" });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -69,7 +77,7 @@ export default function Home() {
               recommendation={recommendation}
               onClick={{
                 implement: handleClickImplement,
-                unapliccable: handleClickUnapliccable,
+                unapliccable: handleClickInapplicable,
                 close: handleCloseRecommendation,
               }}
             />

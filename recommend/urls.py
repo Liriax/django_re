@@ -6,7 +6,7 @@ urlpatterns = [
     path('',views.PostListView.as_view()),
     # path('api/',views.ListSuggestedRecommendations.as_view()),
     re_path(r'^api/$',views.api_recommendations_list),
-    re_path(r'^api/([0-9])$',views.api_recommendations_detail),
+    path('api/<int:id>/',views.api_recommendations_detail),
     path('api/team/<int:id>/',views.api_recommendations_team),
     path('<int:id>/',views.team_recommendations),
     path('<int:id>/<int:year>/<int:month>/<int:day>/',

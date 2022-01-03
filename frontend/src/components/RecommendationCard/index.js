@@ -2,7 +2,7 @@ import { PropTypes } from "prop-types";
 import "./recommendationCard.scss";
 
 export default function RecommendationCard(props) {
-  const { /*id,*/ headline, status, /*date,*/ score, onClick } = props;
+  const { /*id,*/ headline, status, /*date,*/ score, onClick, width } = props;
 
   const handleClickRecommendation = (event) => {
     onClick && onClick(event, props);
@@ -20,7 +20,11 @@ export default function RecommendationCard(props) {
   };
 
   return (
-    <div className="recommendationCard" onClick={handleClickRecommendation}>
+    <div
+      className="recommendationCard"
+      onClick={handleClickRecommendation}
+      style={{ width: width }}
+    >
       <div className="recommendationContent" style={style()}>
         <div className="text">{headline}</div>
         <div className="weights">
@@ -38,4 +42,5 @@ RecommendationCard.propTypes = {
   date: PropTypes.string,
   score: PropTypes.number,
   onClick: PropTypes.func,
+  width: PropTypes.string,
 };

@@ -62,10 +62,10 @@ def api_recommendations_list(request):
             
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['PUT', 'DELETE'])
-def api_recommendations_detail(request, pk):
+@api_view(['PUT', 'DELETE', 'GET'])
+def api_recommendations_detail(request, id):
     try:
-        recommendation = SuggestedRecommendation.objects.get(pk=pk)
+        recommendation = SuggestedRecommendation.objects.get(id=id)
     except SuggestedRecommendation.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -82,6 +82,11 @@ def api_recommendations_detail(request, pk):
     elif request.method == 'DELETE':
         recommendation.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+    #get
+    elif request.method == 'GET':
+            serializer = SuggestedRecommendationSerializer(recommendation, context={'request': request})
+            return Response(serializer.data)
     
 @api_view(['GET'])
 def api_recommendations_team(request, id):
