@@ -6,7 +6,7 @@ export default function RecommendationDetails(props) {
   const { id, recommendation_headline, status, createdAt } = recommendation;
   const {
     implement: onClickImplement,
-    unapliccable: onClickUnapplicable,
+    reject: onClickReject,
     close: onClickClose,
   } = onClick;
 
@@ -34,10 +34,10 @@ export default function RecommendationDetails(props) {
             width="auto"
           />
           <div className="actions">
-            <div onClick={onClickImplement(id)} className="implement">
+            <div onClick={() => onClickImplement(id)} className="implement">
               Implement
             </div>
-            <div onClick={onClickUnapplicable(id)} className="unapplicable">
+            <div onClick={() => onClickReject(id)} className="reject">
               Not applicable
             </div>
           </div>

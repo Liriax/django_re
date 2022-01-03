@@ -6,7 +6,7 @@ export default function RecommendationList(props) {
   const { recommendations, onClick } = props;
 
   const sortRecommendationsByStatus = () => {
-    //Sort recommendations by status in object (sortedRecommendations.current, ...implemented, ...unapplicable)
+    //Sort recommendations by status in object (sortedRecommendations.current, ...implemented, ...rejected)
     return recommendations.reduce((sortedRecommendations, recommendation) => {
       const recommendationStatus = sortedRecommendations[recommendation.status];
       return {

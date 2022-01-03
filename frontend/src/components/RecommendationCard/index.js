@@ -11,9 +11,9 @@ export default function RecommendationCard(props) {
   const style = () => {
     return {
       borderBottomColor:
-        status === "implemented"
+        status === "IMPLEMENTED"
           ? "#0be881"
-          : status === "unapplicable"
+          : status === "REJECTED"
           ? "#ffa801"
           : "#3c40c6",
     };

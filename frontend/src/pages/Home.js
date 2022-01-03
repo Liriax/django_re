@@ -49,13 +49,13 @@ export default function Home() {
 
   const handleClickImplement = (id) => {
     try {
-      API.recommendations.edit(id, { status: "REJECTED" });
+      API.recommendations.edit(id, { status: "IMPLEMENTED" });
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleClickInapplicable = (id) => {
+  const handleClickReject = (id) => {
     try {
       API.recommendations.edit(id, { status: "REJECTED" });
     } catch (error) {
@@ -77,7 +77,7 @@ export default function Home() {
               recommendation={recommendation}
               onClick={{
                 implement: handleClickImplement,
-                unapliccable: handleClickInapplicable,
+                reject: handleClickReject,
                 close: handleCloseRecommendation,
               }}
             />
