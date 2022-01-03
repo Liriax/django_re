@@ -1,37 +1,52 @@
 @import "../../vars";
 
 .recommendationList {
-  width: 100vw;
   padding-top: 5em;
+  padding-bottom: 0.25em;
+  width: 100vw;
+
+  > hr {
+    width: 100%;
+  }
 
   > .recommendationCategory {
-    width: 100vw;
+    width: 100%;
+    margin-bottom: 1.5em;
 
-    > .title {
+    > .title,
+    > .empty {
       padding-left: 1em;
-
-      > .name,
-      .count {
-        display: inline-block;
-      }
     }
 
-    > .content {
-      padding: 0em 1em 0 1em;
+    > .title > .count {
+      margin-left: 0.5em;
+    }
+
+    > .list {
       width: 100%;
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
       align-items: normal;
       align-content: flex-start;
-      width: 100%;
+      flex-wrap: wrap;
 
       @media only screen and (min-width: $breakpoint) {
-        flex-wrap: nowrap;
+        padding-left: 1em;
       }
 
-      @media only screen and (max-width: $breakpoint) {
-        flex-wrap: wrap;
+      .recommendationCard {
+        @media only screen and (min-width: $breakpoint) {
+          margin-right: 1em;
+          width: 12.5%;
+          height: 12em;
+        }
+
+        @media only screen and (max-width: $breakpoint) {
+          margin: 1em auto;
+          width: 90%;
+          height: 10em;
+        }
       }
     }
   }

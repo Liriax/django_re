@@ -2,34 +2,23 @@ import { PropTypes } from "prop-types";
 import "./recommendationCard.scss";
 
 export default function RecommendationCard(props) {
-  const { /*id,*/ headline, status, /*date,*/ score, onClick, width } = props;
+  const { /*id,*/ headline, status, /*date,*/ score, onClick } = props;
 
   const handleClickRecommendation = (event) => {
     onClick && onClick(event, props);
   };
 
-  const style = () => {
-    return {
-      borderBottomColor:
-        status === "implemented"
-          ? "#0be881"
-          : status === "unapplicable"
-          ? "#ffa801"
-          : "#3c40c6",
-    };
+  const generateClassNames = () => {
+    const className = ["recommendationCard"];
+    className.push(status);
+    return className.join(" ");
   };
 
   return (
-    <div
-      className="recommendationCard"
-      onClick={handleClickRecommendation}
-      style={{ width: width }}
-    >
-      <div className="recommendationContent" style={style()}>
-        <div className="text">{headline}</div>
-        <div className="weights">
-          <div className="first weight">{score} %</div>
-        </div>
+    <div className={generateClassNames()} onClick={handleClickRecommendation}>
+      <div className="text">{headline}</div>
+      <div className="weights">
+        <div className="weight">{score} %</div>
       </div>
     </div>
   );
@@ -42,5 +31,4 @@ RecommendationCard.propTypes = {
   date: PropTypes.string,
   score: PropTypes.number,
   onClick: PropTypes.func,
-  width: PropTypes.string,
 };

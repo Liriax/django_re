@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Bar, RecommendationDetails, RecommendationList } from "../components";
 import * as API from "../api";
@@ -9,18 +9,6 @@ export default function Home() {
   const [recommendations, setRecommendations] = useState(null);
   const [recommendation, setRecommendation] = useState(null);
 
-  useEffect(() => {
-    fetchRecommendations();
-  }, []);
-
-  useEffect(() => {
-    if (id) {
-      fetchRecommendation();
-    } else {
-      setRecommendation(null);
-    }
-  }, [id]);
-
   const fetchRecommendations = async () => {
     try {
       const result = await API.recommendations.team(1);
@@ -30,14 +18,26 @@ export default function Home() {
     }
   };
 
-  const fetchRecommendation = async () => {
+  useEffect(() => {
+    fetchRecommendations();
+  }, []);
+
+  const fetchRecommendation = useCallback(async () => {
     try {
       const result = await API.recommendations.recommendation(id);
       setRecommendation(result.data);
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [id]);
+
+  useEffect(() => {
+    if (id) {
+      fetchRecommendation();
+    } else {
+      setRecommendation(null);
+    }
+  }, [id, fetchRecommendation, setRecommendation]);
 
   const handleClickRecommendation = (event, recommendation) => {
     navigate(`/recommendation/${recommendation.id}`);
@@ -55,7 +55,7 @@ export default function Home() {
     }
   };
 
-  const handleClickInapplicable = (id) => {
+  const handleClickRejected = (id) => {
     try {
       API.recommendations.edit(id, { status: "rejected" });
     } catch (error) {
@@ -77,7 +77,7 @@ export default function Home() {
               recommendation={recommendation}
               onClick={{
                 implement: handleClickImplement,
-                unapliccable: handleClickInapplicable,
+                unapliccable: handleClickRejected,
                 close: handleCloseRecommendation,
               }}
             />

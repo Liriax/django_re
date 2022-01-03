@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column;
   padding: 0.5em;
-  flex-grow: 1;
-  flex-shrink: 0;
+  // flex-grow: 1;
+  // flex-shrink: 0;
   width: 100%;
   flex-basis: auto;
   align-self: auto;
@@ -27,7 +27,7 @@
     border: 1px solid;
     border-bottom: 2px solid;
     border-color: #d2dae2;
-    background: $background_thrd_color;
+    background: $background_third_color;
     border-radius: 3px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
       rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
