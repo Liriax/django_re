@@ -3,7 +3,7 @@ import "./recommendationDetails.scss";
 
 export default function RecommendationDetails(props) {
   const { recommendation, onClick } = props;
-  const { /*id,*/ recommendation_headline, status, createdAt } = recommendation;
+  const { id, recommendation_headline, status, createdAt } = recommendation;
   const {
     implement: onClickImplement,
     unapliccable: onClickUnapplicable,
@@ -34,10 +34,10 @@ export default function RecommendationDetails(props) {
             width="auto"
           />
           <div className="actions">
-            <div onClick={onClickImplement} className="implement">
+            <div onClick={onClickImplement(id)} className="implement">
               Implement
             </div>
-            <div onClick={onClickUnapplicable} className="unapplicable">
+            <div onClick={onClickUnapplicable(id)} className="unapplicable">
               Not applicable
             </div>
           </div>
