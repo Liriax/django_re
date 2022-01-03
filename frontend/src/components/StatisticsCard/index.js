@@ -22,15 +22,35 @@ export default function StatisticsCard(props) {
   return (
     <div className="statisticsCard" onClick={handleClickRecommendation}>
       <div className="statisticsContent" style={style()}>
-        <div className="text">{headline}</div>
+        <div>{headline}</div>
         <div className="statisticsContainer">
-          <div className="statisticsRow">
-            <div>Received: </div>
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(6, 1fr)",
+              gridGap: "1em",
+              padding: "1em",
+            }}
+          >
+            <div />
+            <div className="statHeading">Date</div>
+            <div className="statHeading">Change Failure Rate</div>
+            <div className="statHeading">Deployment Frequency</div>
+            <div className="statHeading">Lead Time for Changes</div>
+            <div className="statHeading">Time to Restore Services</div>
+            <div className="rowHeading">Received:</div>
+            <div className="statItem">1</div>
+            <div className="statItem">1</div>
+            <div className="statItem">2</div>
+            <div className="statItem">3</div>
+            <div className="statItem">3</div>
+            <div className="rowHeading">Implemented:</div>
+            <div className="statItem">1</div>
+            <div className="statItem">1</div>
+            <div className="statItem">2</div>
+            <div className="statItem">3</div>
+            <div className="statItem">3</div>
           </div>
-          <div className="statisticsRow">implemented</div>
         </div>
       </div>
     </div>
