@@ -10,6 +10,14 @@ export default function RecommendationDetails(props) {
     close: onClickClose,
   } = onClick;
 
+  const handleClickImplement = () => {
+    onClickImplement(id)
+  }
+
+  const handleClickUnapplicable = () => {
+    onClickUnapplicable(id)
+  }
+
   return (
     <div className="recommendationDetails">
       <div className="close" onClick={onClickClose}>
@@ -34,10 +42,10 @@ export default function RecommendationDetails(props) {
             width="auto"
           />
           <div className="actions">
-            <div onClick={onClickImplement(id)} className="implement">
+            <div onClick={handleClickImplement} className="implement">
               Implement
             </div>
-            <div onClick={onClickUnapplicable(id)} className="unapplicable">
+            <div onClick={handleClickUnapplicable} className="unapplicable">
               Not applicable
             </div>
           </div>
