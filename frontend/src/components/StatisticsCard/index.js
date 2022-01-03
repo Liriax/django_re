@@ -39,17 +39,17 @@ export default function StatisticsCard(props) {
             <div className="statHeading">Lead Time for Changes</div>
             <div className="statHeading">Time to Restore Services</div>
             <div className="rowHeading">Received:</div>
-            <div className="statItem">1</div>
-            <div className="statItem">1</div>
-            <div className="statItem">2</div>
-            <div className="statItem">3</div>
-            <div className="statItem">3</div>
+            <div className="statItem">01.01.2021</div>
+            <div className="statItem">3.8</div>
+            <div className="statItem">2.9</div>
+            <div className="statItem">Months</div>
+            <div className="statItem">2 Hours</div>
             <div className="rowHeading">Implemented:</div>
-            <div className="statItem">1</div>
-            <div className="statItem">1</div>
-            <div className="statItem">2</div>
-            <div className="statItem">3</div>
-            <div className="statItem">3</div>
+            <div className="statItem">01.03.2021</div>
+            <div className="statItem">5.7</div>
+            <div className="statItem">2.3</div>
+            <div className="statItem">Days</div>
+            <div className="statItem">3 Days</div>
           </div>
         </div>
       </div>
