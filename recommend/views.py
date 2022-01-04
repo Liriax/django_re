@@ -1,3 +1,4 @@
+from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from .models import *
 from django.views.generic import ListView
@@ -6,8 +7,9 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 from .serializers import SuggestedRecommendationSerializer, MeasurementSerializer
-from .Recommender import Recommender
-
+from .Recommender import Recommender, rate_measurement
+import pandas as pd
+import re
 
 class PostListView(ListView):
     queryset = SuggestedRecommendation.objects.all()
@@ -15,15 +17,47 @@ class PostListView(ListView):
     context_object_name = 'recommendations'
     template_name = 'recommend/list.html' 
 
+def generate_correlations (request):
+    df = pd.DataFrame.from_records(Measurement.objects.all().values())
+    df["measured_at"]=re.match("^[^:]*",str(df["measured_at"])).group()
+    df["rating"]=df.apply(lambda x: rate_measurement(x["object_id"],x["value"])[1],axis=1)
+    df = df.groupby(by=["measured_at","team_id"])\
+        .apply(lambda x: dict(zip(zip(x['object_id'],x['content_type_id']), x['rating'])))\
+        .reset_index(name='measurements')
+    measurement_list= list(df.iloc[:,2])
+    measurement_df = pd.DataFrame.from_records(measurement_list)
+    measurement_df = measurement_df.reindex(sorted(measurement_df.columns), axis=1)
+    correlation = {}
+    for x in range(0,4):
+        dora_column=measurement_df.iloc[:,x]
+        for y in range(4,28):
+            metric_column=measurement_df.iloc[:,y]
+            correlation[(dora_column.name, metric_column.name)] = dora_column.corr(metric_column) 
+    try:  
+        for x, y in correlation.items():
+            dora_kpi = Dora_kpi.objects.get(id=x[0][0])
+            metric = Metric.objects.get(id=x[1][0])
+            Correlation.objects.create(dora_kpi=dora_kpi, metric=metric, value=y)
+        return HttpResponse('generated correlations')
+    except:
+        return HttpResponse('Failed: not enough measurements?')
+        
+    
 def team_recommendations (request, id):
     team = Team.objects.get(id=id)
     generated_recommendations = Recommender().generate_recommendations(team)
-    return render(request,
-                  'recommend/team/latest_recommendations.html',
-                  {
-                   'recommendations':generated_recommendations,
-                   'team':team
-                   })
+    # add newly generated recommendations to the database:
+    if generated_recommendations and len(generated_recommendations)>0:
+        for recommendation in generated_recommendations:
+            SuggestedRecommendation.objects.create(recommendation=recommendation, team=team)
+        return render(request,
+                    'recommend/team/latest_recommendations.html',
+                    {
+                    'recommendations':generated_recommendations,
+                    'team':team
+                    })
+    else:
+        return HttpResponse('Error generating recommendations: no recommendations generated')
     
 def team_time_recommendations (request, id, year, month, day):
     team = Team.objects.get(id=id)

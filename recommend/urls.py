@@ -12,5 +12,6 @@ urlpatterns = [
     path('<int:id>/<int:year>/<int:month>/<int:day>/',
          views.team_time_recommendations,
          name = 'team_recommendations'),
-    path('api/<int:id>/<int:measurement_id>/', views.api_dora_kpi)
+    path('api/<int:id>/<int:measurement_id>/', views.api_dora_kpi),
+    path('correlations/', views.generate_correlations)
 ]
